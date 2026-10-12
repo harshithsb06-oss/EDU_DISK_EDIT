@@ -1,0 +1,379 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand: #2a2fff;
+  --color-brand-hover: #1e24db;
+  --color-brand-subtle: rgba(42, 47, 255, 0.08);
+  --color-brand-dark: #191ec4;
+
+  --color-background: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f8fafc;
+  --color-surface-dim: #f1f5f9;
+  
+  /* Text */
+  --color-text-main: #243047;
+  --color-text-muted: #64748b;
+  --color-on-background: #243047;
+  --color-on-surface: #243047;
+  --color-on-surface-variant: #64748b;
+
+  /* Primary accent: EduDisk Brand Indigo/Blue #2a2fff */
+  --color-primary: #2a2fff;
+  --color-primary-hover: #1e24db;
+  --color-primary-active: #191ec4;
+  --color-on-primary: #ffffff;
+
+  /* Secondary accent: Soft violet */
+  --color-secondary: #8b7cf6;
+  --color-secondary-hover: #7a6bf5;
+  --color-on-secondary: #ffffff;
+
+  /* Soft Pastel Palette */
+  --color-pastel-blue: #eaf4ff;
+  --color-pastel-lavender: #f0ecff;
+  --color-pastel-mint: #e8f8f1;
+  --color-pastel-peach: #fff0e6;
+  --color-pastel-pink: #fce7f3;
+
+  /* Accents */
+  --color-mint-text: #0d9488;
+  --color-peach-text: #ea580c;
+  --color-pink-text: #db2777;
+
+  /* WhatsApp */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #128c7e;
+
+  /* Slate overrides for brand consistency */
+  --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
+  --color-slate-600: #64748b;
+
+  --font-headline: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --spacing-gutter: 24px;
+  --spacing-margin-mobile: 20px;
+  --spacing-margin-desktop: 64px;
+  --spacing-container-max: 1280px;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 7s ease-in-out infinite -2s;
+  --animate-pulse-soft: pulseSoft 3s ease-in-out infinite;
+}
+
+:root {
+  --color-brand: #2a2fff;
+  --color-brand-hover: #1e24db;
+  --color-brand-subtle: rgba(42, 47, 255, 0.08);
+  --color-brand-border: rgba(42, 47, 255, 0.25);
+}
+
+.dark {
+  --color-brand: #4348ff;
+  --color-brand-hover: #2a2fff;
+  --color-brand-subtle: rgba(67, 72, 255, 0.16);
+  --color-brand-border: rgba(67, 72, 255, 0.35);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(0.4deg); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+/* Material Symbols config */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.material-symbols-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Body & typography defaults */
+body {
+  min-height: 100dvh;
+  background-color: #ffffff;
+  color: #243047;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #0a0f1d;
+  color: #f1f5f9;
+}
+
+/* Soft ambient background */
+.bg-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -20;
+  background-color: #ffffff;
+  background-image: 
+    radial-gradient(at 95% 5%, rgba(234, 244, 255, 0.8) 0px, transparent 55%),
+    radial-gradient(at 5% 20%, rgba(240, 236, 255, 0.7) 0px, transparent 50%),
+    radial-gradient(at 85% 65%, rgba(232, 248, 241, 0.6) 0px, transparent 50%),
+    radial-gradient(at 15% 85%, rgba(255, 240, 230, 0.6) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(252, 231, 243, 0.4) 0px, transparent 60%);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+html.dark .bg-mesh {
+  background-color: #0a0f1d;
+  background-image: 
+    radial-gradient(at 95% 5%, rgba(42, 47, 255, 0.12) 0px, transparent 55%),
+    radial-gradient(at 5% 20%, rgba(139, 124, 246, 0.10) 0px, transparent 50%),
+    radial-gradient(at 85% 65%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
+    radial-gradient(at 15% 85%, rgba(234, 88, 12, 0.07) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(42, 47, 255, 0.05) 0px, transparent 60%);
+}
+
+/* Soft White Cards */
+.soft-card {
+  background: #ffffff;
+  border: 1px solid #eef2f6;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px -2px rgba(42, 47, 255, 0.05), 0 2px 6px -1px rgba(36, 48, 71, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.soft-card:hover {
+  border-color: #e2e8f0;
+  box-shadow: 0 14px 30px -4px rgba(42, 47, 255, 0.12), 0 4px 10px -2px rgba(36, 48, 71, 0.04);
+  transform: translateY(-3px);
+}
+
+html.dark .soft-card {
+  background: #111827;
+  border-color: #1e293b;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+}
+
+html.dark .soft-card:hover {
+  border-color: #334155;
+  box-shadow: 0 14px 30px -4px rgba(42, 47, 255, 0.2);
+}
+
+/* EduDisk Brand Button (#2a2fff) */
+.btn-primary {
+  background: linear-gradient(135deg, #2a2fff 0%, #4348ff 100%);
+  color: #ffffff !important;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 700;
+  border-radius: 0.875rem;
+  box-shadow: 0 4px 14px 0 rgba(42, 47, 255, 0.30);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1e24db 0%, #3035f5 100%);
+  box-shadow: 0 8px 24px 0 rgba(42, 47, 255, 0.42);
+  transform: translateY(-1.5px);
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: #243047;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.875rem;
+  box-shadow: 0 2px 6px 0 rgba(36, 48, 71, 0.04);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-secondary:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #2a2fff;
+  box-shadow: 0 4px 12px 0 rgba(42, 47, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+html.dark .btn-secondary {
+  background: #162036;
+  color: #f1f5f9;
+  border-color: #24324f;
+}
+
+html.dark .btn-secondary:hover {
+  background: #1e2c4a;
+  border-color: #3b82f6;
+  color: #60a5fa;
+}
+
+/* Liquid button backward compatibility */
+.liquid-button {
+  background: linear-gradient(135deg, #2a2fff 0%, #4348ff 100%);
+  color: #ffffff !important;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  box-shadow: 0 4px 14px 0 rgba(42, 47, 255, 0.30);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.liquid-button:hover {
+  background: linear-gradient(135deg, #1e24db 0%, #3035f5 100%);
+  box-shadow: 0 8px 22px 0 rgba(42, 47, 255, 0.40);
+  transform: translateY(-1.5px);
+}
+
+/* Soft Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #2a2fff 0%, #7c3aed 60%, #1e24db 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html.dark .gradient-text {
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 60%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Pastel Badge Classes */
+.badge-blue {
+  background-color: #eaf4ff;
+  color: #2a2fff;
+  border: 1px solid rgba(42, 47, 255, 0.2);
+}
+
+html.dark .badge-blue {
+  background-color: rgba(42, 47, 255, 0.15);
+  color: #93c5fd;
+  border: 1px solid rgba(42, 47, 255, 0.35);
+}
+
+.badge-lavender {
+  background-color: #f0ecff;
+  color: #7965f4;
+  border: 1px solid rgba(139, 124, 246, 0.2);
+}
+
+html.dark .badge-lavender {
+  background-color: rgba(139, 124, 246, 0.15);
+  color: #c4b5fd;
+  border: 1px solid rgba(139, 124, 246, 0.35);
+}
+
+.badge-mint {
+  background-color: #e8f8f1;
+  color: #0d9488;
+  border: 1px solid rgba(13, 148, 136, 0.2);
+}
+
+html.dark .badge-mint {
+  background-color: rgba(13, 148, 136, 0.15);
+  color: #5eead4;
+  border: 1px solid rgba(13, 148, 136, 0.35);
+}
+
+.badge-peach {
+  background-color: #fff0e6;
+  color: #ea580c;
+  border: 1px solid rgba(234, 88, 12, 0.2);
+}
+
+html.dark .badge-peach {
+  background-color: rgba(234, 88, 12, 0.15);
+  color: #fdba74;
+  border: 1px solid rgba(234, 88, 12, 0.35);
+}
+
+.badge-pink {
+  background-color: #fce7f3;
+  color: #db2777;
+  border: 1px solid rgba(219, 39, 119, 0.2);
+}
+
+html.dark .badge-pink {
+  background-color: rgba(219, 39, 119, 0.15);
+  color: #f472b6;
+  border: 1px solid rgba(219, 39, 119, 0.35);
+}
+
+/* Glass Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(238, 242, 246, 0.9);
+  box-shadow: 0 4px 20px -2px rgba(42, 47, 255, 0.05);
+}
+
+html.dark .glass-card {
+  background: rgba(17, 24, 39, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(36, 50, 79, 0.7);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+}
+
+/* Selection */
+::selection {
+  background: rgba(42, 47, 255, 0.22);
+  color: #0f172a;
+}
+
+html.dark ::selection {
+  background: rgba(67, 72, 255, 0.35);
+  color: #ffffff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f8fafc; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+html.dark ::-webkit-scrollbar-track { background: #0a0f1d; }
+html.dark ::-webkit-scrollbar-thumb { background: #1e293b; }
+html.dark ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Snap scroll */
+.snap-x-mandatory { scroll-snap-type: x mandatory; }
+.snap-start { scroll-snap-align: start; }
+
+/* FAQ accordion */
+details > summary::-webkit-details-marker { display: none; }
+details > summary { list-style: none; }
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
